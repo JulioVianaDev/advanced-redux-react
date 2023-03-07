@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 function App() {
 
   const cartShow = useSelector(state=> state.ui.cartIsVisible);
-  console.log(cartShow)
   return (
     <Layout>
      {cartShow &&  <Cart />}
