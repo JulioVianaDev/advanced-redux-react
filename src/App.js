@@ -4,7 +4,11 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import { useSelector,useDispatch } from 'react-redux';
 import { uiActions } from './store/slices/UiSlice';
-import Notification from './components/UI/Notification';
+import Notification from './components/UI/Notification'; 
+
+
+let isInitial = true;
+
 function App() {
 
   const cartShow = useSelector(state=> state.ui.cartIsVisible);
@@ -33,7 +37,10 @@ function App() {
         message: 'Send cart data com sucesso',
       }))
     }
-
+    if(isInitial){
+      isInitial =false;
+      return;
+    }
     sendCartData().catch(error =>{
       dispatch(uiActions.showNotification({
         status: 'error',
